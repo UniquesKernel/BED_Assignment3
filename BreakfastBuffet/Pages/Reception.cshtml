@@ -1,0 +1,34 @@
+﻿@page
+@model BreakfastBuffet.Pages.Reservation
+@{
+}
+
+<div id="Reception_Page">
+  <div id="Reception_Header">
+    <h1>
+      Welcome to the Reception
+    </h1>
+  </div>
+  <div id="Reception_SubHeader">
+    <p>
+      Here you can indicate how many guests have ordered breakfast for a given date. <br/>
+      Each breakfast is separated into child guests and adult guests.
+    </p>
+  </div>
+  <form id="Breakfast_order">
+    <div>
+      <label>Adult</label>
+      <input type="number"/>
+    </div>
+    <div>
+      <label>Children</label>
+      <input type="number"/>
+    </div>
+    <div>
+      <br/>
+      <input type="date"/>
+    </div>
+  </form>
+  <button type="submit"> Submit </button>
+
+</div>

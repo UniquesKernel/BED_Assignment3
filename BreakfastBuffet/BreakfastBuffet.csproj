@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Pages\WorkSpace\" />
+    <Folder Include="Data\Migrations\" />
     <Folder Include="Data\Model\" />
     <Folder Include="Hubs\" />
   </ItemGroup>

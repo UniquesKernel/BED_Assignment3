@@ -1,4 +1,5 @@
 using BreakfastBuffet.Data;
+using BreakfastBuffet.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,7 +28,11 @@ builder.Services.AddAuthorization(option =>
       .RequireClaim("IsWaiter"));
 });
 
+
+
+
 builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -62,5 +67,6 @@ using (var scope = app.Services.CreateScope())
     else throw new Exception("Unable to get UserManager!");
 }
 
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

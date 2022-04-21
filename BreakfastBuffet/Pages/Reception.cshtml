@@ -18,17 +18,20 @@
   <form id="Breakfast_order">
     <div>
       <label>Adult</label>
-      <input type="number"/>
+      <input asp-for="Input.ReservationsAdult" type="number" />
     </div>
     <div>
       <label>Children</label>
-      <input type="number"/>
+      <input asp-for="Input.ReservationsChild" type="number"/>
+    </div>
+    <div>
+      <label>Room Number</label>
+      <input asp-for="Input.RoomNumber" type="number"/>
     </div>
     <div>
       <br/>
-      <input type="date"/>
+      <input asp-for="Input.ReservationDate" type="date"/>
     </div>
+    <button type="submit"> Submit </button>
   </form>
-  <button type="submit"> Submit </button>
-
 </div>

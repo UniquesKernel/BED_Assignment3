@@ -2,3 +2,26 @@
 @model BreakfastBuffet.Pages.CheckInModel
 @{
 }
+
+<div>
+  <h1>Welcome to the Check In</h1> <br/>
+  <p>
+    Here you can check in the guests that have arrived for breakfast <br/>
+    On any given date
+  </p>
+  <form id="Checkin-Form" method="post">
+    <div>
+      <label> Adults </label>
+      <input type="number" />
+    </div>
+   <div>
+      <label> Children </label>
+      <input type="number" />
+    </div>
+   <div>
+      <label> Room Number </label>
+      <input type="number"/>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

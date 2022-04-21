@@ -1,0 +1,19 @@
+﻿@page
+@model BreakfastBuffet.Pages.KitchenModel
+@{
+}
+
+<div>
+  <h1>Welcome to the Kitchen</h1> <br/>
+  <p>
+    Here you can see how many people (adults and children) <br/>
+    have reserved a spot at breakfast, have shown up and <br/>
+    how many have yet to check in.
+  </p>
+  <form method="get">
+    <label> Date </label>
+    <input asp-for="Date" type="date"/>
+    <button type="button"> Request Serving</button>
+  </form>
+
+</div>

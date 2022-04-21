@@ -67,6 +67,6 @@ using (var scope = app.Services.CreateScope())
     else throw new Exception("Unable to get UserManager!");
 }
 
-app.MapHub<ChatHub>("/chatHub");
+app.MapHub<MessageHub>("/MessageHub");
 
 app.Run();

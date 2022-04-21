@@ -31,11 +31,19 @@ namespace BreakfastBuffet.Pages
           DbContextOptions<ApplicationDbContext> option = new DbContextOptions<ApplicationDbContext>();
           using (var context = new ApplicationDbContext(option))
           {
-            ReservationModel reservation = await context.Reservations.FirstAsync(r => r.RoomNumber == Input.RoomNumber && r.ReservationDate == DateTime.Now.Date);
-            reservation.AttendingAdults = Input.CheckedInAdult;
-            reservation.AttendingChildren = Input.CheckedInChildren;
+                if (context.Reservations.Any(r => r.RoomNumber == Input.RoomNumber && r.ReservationDate == DateTime.Now.Date))
+                {
+                    ReservationModel reservation = await context.Reservations.FirstAsync(r => r.RoomNumber == Input.RoomNumber && r.ReservationDate == DateTime.Now.Date);
 
-            await context.SaveChangesAsync();
+                    if (reservation.ReservationsAdult <= Input.CheckedInAdult && reservation.ReservationsChild <= Input.CheckedInChildren)
+                    { 
+                    reservation.AttendingAdults = Input.CheckedInAdult;
+                    reservation.AttendingChildren = Input.CheckedInChildren;
+
+                    await context.SaveChangesAsync();
+                    }
+                }
+            
           }
 
           return LocalRedirect(returnUrl);

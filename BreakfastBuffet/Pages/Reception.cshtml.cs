@@ -1,16 +1,24 @@
 using BreakfastBuffet.Areas.Identity.Pages.Account;
 using BreakfastBuffet.Data;
 using BreakfastBuffet.Data.Model;
+using BreakfastBuffet.Hubs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
 
 namespace BreakfastBuffet.Pages
 {
     [Authorize("canAccessReception")]
     public class Reservation : PageModel
     {
+        public IHubContext<MessageHub> _messageHub;
+
+        public Reservation(IHubContext<MessageHub> messageHub)
+        {
+            _messageHub = messageHub;
+        }
       public ReservationModel Reservations { get; set; }
       [BindProperty]
       public InputModel Input { get; set; } = new InputModel();
@@ -37,11 +45,17 @@ namespace BreakfastBuffet.Pages
             RoomNumber = Input.RoomNumber
           };
 
+
           DbContextOptions<ApplicationDbContext> option = new DbContextOptions<ApplicationDbContext>();
           using (var context = new ApplicationDbContext(option))
           {
-            context.Reservations.Add(Reservations);
-            await context.SaveChangesAsync();
+                if (!context.Reservations.Any(x => x.RoomNumber == Reservations.RoomNumber
+                && x.ReservationDate == Reservations.ReservationDate))
+                {
+                    context.Reservations.Add(Reservations);
+                    await context.SaveChangesAsync();
+                    await _messageHub.Clients.All.SendAsync("ReceiveMessage");
+                }
           }
 
           return LocalRedirect(returnUrl);

@@ -1,5 +1,4 @@
 ﻿using BreakfastBuffet.Data.Model;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +19,11 @@ namespace BreakfastBuffet.Data
       modelBuilder.Entity<ReservationModel>()
         .HasKey(r => new {r.RoomNumber, r.ReservationDate});
       base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+      optionsBuilder.UseSqlServer();
     }
   }
 }

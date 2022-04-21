@@ -1,4 +1,6 @@
+using BreakfastBuffet;
 using BreakfastBuffet.Data;
+using BreakfastBuffet.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,6 +30,7 @@ builder.Services.AddAuthorization(option =>
 });
 
 builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -51,6 +54,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<KitchenHub>("/kitchenHub");
 app.MapRazorPages();
 
 app.Run();

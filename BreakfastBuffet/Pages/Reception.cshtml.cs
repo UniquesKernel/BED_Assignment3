@@ -28,7 +28,7 @@ namespace BreakfastBuffet.Pages
 
         public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
-          returnUrl ??= Url.Content("~/");
+          returnUrl ??= Url.Content("~/Reception");
           Reservations = new ReservationModel
           {
             ReservationsAdult = Input.ReservationsAdult,

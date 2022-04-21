@@ -22,3 +22,15 @@ input, label {
   margin: 0 0 0 5px;
 }
 
+table, th, tr {
+  border: 1px solid black;
+}
+
+th {
+  padding: 0px 10px 0px 10px;
+}
+
+th, tr {
+  text-align: center;
+}
+

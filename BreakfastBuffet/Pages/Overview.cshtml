@@ -1,0 +1,29 @@
+﻿@page
+@using System.Collections
+@model BreakfastBuffet.Pages.OverviewModel
+@{
+}
+
+<h1>Welcome to the Overview Page</h1>
+<p>
+  Here you can get an overview over how many people from <br/>
+  each room has eaten today.
+</p>
+
+<div>
+  <table style="width:auto" id="CheckInList">
+    <tr>
+      <th>Room</th>
+      <th>Adult</th>
+      <th>Children</th>
+    </tr>
+    @foreach (var l in Model.CheckInList)
+    {
+      <tr>
+        <th>@l.Item1</th>
+        <th>@l.Item2</th>
+        <th>@l.Item3</th>
+      </tr>
+    }
+  </table>
+</div>

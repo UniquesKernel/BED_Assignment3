@@ -12,18 +12,33 @@
     have reserved a spot at breakfast, have shown up and <br/>
     how many have yet to check in.
   </p>
-  <form method="get">
+  <form method="post">
     <label> Date </label>
     <input asp-for="Input.CurrentDate" type="date"/>
     <button type="submit"> Request Serving</button>
   </form>
-  
+  <div>
+    <p id="adultReservation"></p>
+  </div>
 
   <script src="~/js/signalr/dist/browser/signalr.js"></script>
   <script src="~/js/chat.js"></script>
+  
+  <script type="text/javascript">
+    setTimeout(function(){
+      window.location.reload(1);
+    }, 5000);
+  </script>
 </div>
 
 <div>
-  <h3>@ViewData["Adults"]</h3>
+  <h3>Total Adults: @ViewData["Adult"]</h3><br/>
+  <h3>Total Children: @ViewData["Children"]</h3><br/>
+  <h3>Total Reservation @ViewData["Total"]</h3><br/>
+  <h3>Checked In Adults: @ViewData["CheckedInAdult"]</h3><br/>
+  <h3>Checked In Children @ViewData["CheckedInChildren"]</h3><br/>
+  <h3>Remaining Adults: @ViewData["RemainingAdult"]</h3><br/>
+  <h3>Remaining Children: @ViewData["RemainingChildren"]</h3><br/>
+  <h3>Total Remaining: @ViewData["RemainingTotal"]</h3>
 </div>
 

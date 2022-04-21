@@ -12,15 +12,15 @@
   <form id="Checkin-Form" method="post">
     <div>
       <label> Adults </label>
-      <input type="number" />
+      <input asp-for="Input.CheckedInAdult" type="number" />
     </div>
    <div>
       <label> Children </label>
-      <input type="number" />
+      <input asp-for="Input.CheckedInChildren" type="number" />
     </div>
    <div>
       <label> Room Number </label>
-      <input type="number"/>
+      <input asp-for="Input.RoomNumber" type="number"/>
     </div>
     <button type="submit">Submit</button>
   </form>

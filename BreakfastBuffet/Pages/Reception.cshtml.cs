@@ -12,7 +12,8 @@ namespace BreakfastBuffet.Pages
     public class Reservation : PageModel
     {
       public ReservationModel Reservations { get; set; }
-      public InputModel Input { get; set; }
+      [BindProperty]
+      public InputModel Input { get; set; } = new InputModel();
       public class InputModel
       {
         public int RoomNumber { get; set; }
@@ -40,7 +41,7 @@ namespace BreakfastBuffet.Pages
           using (var context = new ApplicationDbContext(option))
           {
             context.Reservations.Add(Reservations);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
           }
 
           return LocalRedirect(returnUrl);

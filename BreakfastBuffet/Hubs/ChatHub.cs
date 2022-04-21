@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using BreakfastBuffet.Data;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 namespace BreakfastBuffet.Hubs
 {
   public class ChatHub : Hub
   {
-    public async Task SendMessage(string user, string message)
+    public async Task SendMessage()
     {
-      await Clients.All.SendAsync("ReceiveMessage", user, message);
+      await Clients.All.SendAsync("ReceiveMessage");
     }
   }
 }

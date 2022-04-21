@@ -20,5 +20,10 @@ namespace BreakfastBuffet.Data
         .HasKey(r => new {r.RoomNumber, r.ReservationDate});
       base.OnModelCreating(modelBuilder);
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder option)
+    {
+      option.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet-BreakfastBuffet;Trusted_Connection=True;MultipleActiveResultSets=true");
+    }
   }
 }

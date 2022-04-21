@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BreakfastBuffet.Pages
 {
-    // [Authorize("canAccessReception")]
+    [Authorize("canAccessReception")]
     public class Reservation : PageModel
     {
       public ReservationModel Reservations { get; set; }

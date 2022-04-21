@@ -1,11 +1,13 @@
 using BreakfastBuffet.Data;
 using BreakfastBuffet.Data.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace BreakfastBuffet.Pages;
 
+[Authorize("canAccessReception")]
 public class OverviewModel : PageModel
 {
   [BindProperty]
